@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 import donataBg from '../assets/donata-bg.png';
 import donataLogo from '../assets/donata-logo.png';
@@ -23,8 +24,11 @@ function Home() {
           <div>
             <h1>Receive or send any ERC20</h1>
             <p>
-              Donata make it easy to send and receive ERC20 token, intuitively.
+              DONATA make it easy to send and receive ERC20 token, intuitively.
             </p>
+            <NavLink to="/front-page" target="_blank" className="to-front">
+              Front Page
+            </NavLink>
           </div>
           <div>
             <img src={donataBg} alt="donata-background" />

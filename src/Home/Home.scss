@@ -108,6 +108,7 @@
       p {
         font-size: 18px;
         line-height: 1.7;
+        margin-bottom: 30px;
       }
       img {
         width: 750px;
@@ -119,6 +120,18 @@
           width: 90%;
           margin-left: 0;
           margin-top: 20px;
+        }
+      }
+      .to-front {
+        margin-top: 50px;
+        border: 2px solid #fff;
+        padding: 10px 20px;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 30px;
+        &:hover {
+          background: #fff;
+          color: #000;
         }
       }
     }
