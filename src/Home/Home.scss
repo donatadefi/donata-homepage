@@ -1,23 +1,48 @@
+@mixin phone {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin laptop {
+  @media (min-width: 768px) and (max-width: 1400px) {
+    @content;
+  }
+}
+
 .Home {
   header {
     background: linear-gradient(to right, #00095e 0%, #0c0c1f 100%);
     position: fixed;
     width: 100%;
     box-sizing: border-box;
+    z-index: 9;
     .header-flex {
       width: 1200px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 20px 0;
-
       color: #ffffff;
+      @include phone {
+        width: 100vw;
+        box-sizing: border-box;
+        padding: 10px;
+      }
       div {
         display: flex;
         align-items: center;
         img {
           width: 50px;
           margin-right: 20px;
+          @include phone {
+            width: 30px;
+          }
+        }
+        h1 {
+          @include phone {
+            font-size: 18px;
+          }
         }
       }
       button {
@@ -28,11 +53,17 @@
         font-weight: 600;
         padding: 10px 30px;
         border-radius: 30px;
+        @include phone {
+          font-size: 14px;
+        }
       }
     }
   }
   section {
     padding: 150px 100px;
+    @include phone {
+      padding: 50px 20px;
+    }
   }
   .wrapper-header {
     width: 1200px;
@@ -43,6 +74,9 @@
     width: 1200px;
     margin: 0 auto;
     text-align: center;
+    @include phone {
+      width: 100%;
+    }
     h1 {
       font-size: 46px;
       color: #232f55;
@@ -59,10 +93,17 @@
       margin: 0 auto;
       max-width: 1200px;
       color: #ffffff;
+      @include phone {
+        display: block;
+      }
       h1 {
         font-size: 50px;
         margin-bottom: 30px;
         line-height: 1.4;
+        @include phone {
+          font-size: 30px;
+          margin-bottom: 10px;
+        }
       }
       p {
         font-size: 18px;
@@ -71,6 +112,14 @@
       img {
         width: 750px;
         margin-left: 20px;
+        @include laptop {
+          width: 600px;
+        }
+        @include phone {
+          width: 90%;
+          margin-left: 0;
+          margin-top: 20px;
+        }
       }
     }
   }
@@ -80,11 +129,18 @@
       font-size: 46px;
       color: #232f55;
       margin-bottom: 100px;
+      @include phone {
+        font-size: 30px;
+        margin-bottom: 40px;
+      }
     }
     .offer-grid {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
       grid-gap: 50px;
+      @include phone {
+        display: block;
+      }
       div {
         .circle {
           width: 150px;
@@ -96,6 +152,11 @@
           box-shadow: 0px 2px 25px 0px #f3f3f3;
           border-radius: 50%;
           margin-bottom: 40px;
+          @include phone {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 20px;
+          }
         }
         h2 {
           color: #232f55;
@@ -104,6 +165,9 @@
         p {
           color: #3f4854;
           line-height: 1.7;
+          @include phone {
+            font-size: 16px;
+          }
         }
       }
     }
@@ -111,5 +175,164 @@
 
   .tokenomics {
     background: #f6f9fc;
+    .tokenomics-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 300px;
+      text-align: left;
+      @include phone {
+        display: block;
+      }
+      h1 {
+        margin-bottom: 30px;
+        @include phone {
+          font-size: 30px;
+          text-align: center;
+          margin-bottom: 15px;
+        }
+      }
+      img {
+        border-radius: 8px;
+        width: 100%;
+        @include phone {
+          width: 80%;
+          display: block;
+          margin: 0 auto;
+          margin-bottom: 20px;
+        }
+      }
+      .tokenomics-img {
+        position: relative;
+        div {
+          position: absolute;
+          top: 100px;
+          left: 70%;
+          width: 70%;
+          background: #fff;
+          padding: 30px;
+          border-radius: 8px;
+          box-shadow: 0 20px 30px#6d6d6d;
+          @include phone {
+            left: 0;
+            top: 10px;
+          }
+          h2 {
+            color: #232f55;
+            margin-bottom: 10px;
+            @include phone {
+              font-size: 14px;
+            }
+          }
+          p {
+            color: #3f4854;
+            @include phone {
+              font-size: 14px;
+            }
+          }
+        }
+      }
+      .tokenomics-list {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+        @include phone {
+          margin-bottom: 10px;
+        }
+        p {
+          margin-left: 20px;
+          color: #101a31;
+          @include phone {
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+
+  .platform-user {
+    background: linear-gradient(to right, #0c0c1f 0%, #00095e 100%);
+    .wrapper-parent {
+      text-align: left;
+      h3 {
+        color: #ff4495;
+        margin-bottom: 20px;
+        @include phone {
+          margin-bottom: 10px;
+        }
+      }
+      .flex-template {
+        display: flex;
+        justify-content: space-between;
+        @include phone {
+          display: block;
+        }
+        h2 {
+          color: #ffffff;
+          font-size: 40px;
+          @include phone {
+            font-size: 30px;
+          }
+        }
+        p {
+          color: #fff;
+          width: 40%;
+          margin-left: 100px;
+          line-height: 1.7;
+          font-size: 18px;
+          @include phone {
+            width: 100%;
+            margin-left: 0;
+          }
+        }
+      }
+
+      .user-box-parent {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        margin-top: 100px;
+        grid-gap: 20px;
+        @include phone {
+          display: block;
+          margin-top: 20px;
+        }
+        div {
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          padding: 50px;
+          text-align: center;
+          @include phone {
+            padding: 10px;
+            width: 50%;
+            margin: 0 auto;
+            margin-bottom: 10px;
+          }
+          p {
+            color: #fff;
+            margin-top: 10px;
+            font-size: 18px;
+            font-weight: 600;
+          }
+        }
+      }
+    }
+  }
+
+  footer {
+    background: #222325;
+    padding: 50px 20px;
+    text-align: center;
+    @include phone {
+      padding: 10px;
+    }
+    .wrapper-parent {
+      display: flex;
+      justify-content: center;
+
+      a {
+        margin-right: 10px;
+        margin-left: 10px;
+        text-align: center;
+        display: block;
+      }
+    }
   }
 }

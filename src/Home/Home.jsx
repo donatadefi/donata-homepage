@@ -2,6 +2,7 @@ import React from 'react';
 
 import donataBg from '../assets/donata-bg.png';
 import donataLogo from '../assets/donata-logo.png';
+import tokenomics from '../assets/tokenomics.png';
 
 import './Home.scss';
 
@@ -57,7 +58,7 @@ function Home() {
               <p>
                 You don't have to login or provide any credentials to use the
                 platform. Just connect your MetaMask wallet and you're good to
-                go, ready to accept donation.
+                go.
               </p>
             </div>
             <div>
@@ -108,7 +109,7 @@ function Home() {
                   <path d="M6.337 17.657a8 8 0 0 1 0 -11.314" />
                 </svg>
               </div>
-              <h2>Easy</h2>
+              <h2>Ease of Use</h2>
               <p>
                 You don't have to setup anything, connect your wallet and you
                 are ready to accept any ERC20 tokens as donation.
@@ -198,12 +199,298 @@ function Home() {
           </div>
         </div>
       </section>
-
       <section className="tokenomics">
         <div className="wrapper-parent">
-          <h1>Tokenomics</h1>
+          <div className="tokenomics-grid">
+            <div className="tokenomics-img">
+              <div>
+                <h2>1,000,000 Max Supply</h2>
+                <p>Fixed supply, no more can be minted.</p>
+              </div>
+
+              <img src={tokenomics} alt="tokenomics-illustration" />
+            </div>
+            <div>
+              <h1>Tokenomics</h1>
+              <div className="tokenomics-list">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="icon icon-tabler icon-tabler-circle-dashed"
+                  width="60"
+                  height="60"
+                  viewBox="0 0 24 24"
+                  strokeWidth="1.5"
+                  stroke="#ff4495"
+                  fill="none"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                  <path d="M8.56 3.69a9 9 0 0 0 -2.92 1.95" />
+                  <path d="M3.69 8.56a9 9 0 0 0 -.69 3.44" />
+                  <path d="M3.69 15.44a9 9 0 0 0 1.95 2.92" />
+                  <path d="M8.56 20.31a9 9 0 0 0 3.44 .69" />
+                  <path d="M15.44 20.31a9 9 0 0 0 2.92 -1.95" />
+                  <path d="M20.31 15.44a9 9 0 0 0 .69 -3.44" />
+                  <path d="M20.31 8.56a9 9 0 0 0 -1.95 -2.92" />
+                  <path d="M15.44 3.69a9 9 0 0 0 -3.44 -.69" />
+                </svg>
+                <p>10,000 private sale (1%)</p>
+              </div>
+              <div className="tokenomics-list">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="icon icon-tabler icon-tabler-circle-dashed"
+                  width="60"
+                  height="60"
+                  viewBox="0 0 24 24"
+                  strokeWidth="1.5"
+                  stroke="#ff4495"
+                  fill="none"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                  <path d="M8.56 3.69a9 9 0 0 0 -2.92 1.95" />
+                  <path d="M3.69 8.56a9 9 0 0 0 -.69 3.44" />
+                  <path d="M3.69 15.44a9 9 0 0 0 1.95 2.92" />
+                  <path d="M8.56 20.31a9 9 0 0 0 3.44 .69" />
+                  <path d="M15.44 20.31a9 9 0 0 0 2.92 -1.95" />
+                  <path d="M20.31 15.44a9 9 0 0 0 .69 -3.44" />
+                  <path d="M20.31 8.56a9 9 0 0 0 -1.95 -2.92" />
+                  <path d="M15.44 3.69a9 9 0 0 0 -3.44 -.69" />
+                </svg>
+                <p>50,000 marketing (5%)</p>
+              </div>
+              <div className="tokenomics-list">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="icon icon-tabler icon-tabler-circle-dashed"
+                  width="60"
+                  height="60"
+                  viewBox="0 0 24 24"
+                  strokeWidth="1.5"
+                  stroke="#ff4495"
+                  fill="none"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                  <path d="M8.56 3.69a9 9 0 0 0 -2.92 1.95" />
+                  <path d="M3.69 8.56a9 9 0 0 0 -.69 3.44" />
+                  <path d="M3.69 15.44a9 9 0 0 0 1.95 2.92" />
+                  <path d="M8.56 20.31a9 9 0 0 0 3.44 .69" />
+                  <path d="M15.44 20.31a9 9 0 0 0 2.92 -1.95" />
+                  <path d="M20.31 15.44a9 9 0 0 0 .69 -3.44" />
+                  <path d="M20.31 8.56a9 9 0 0 0 -1.95 -2.92" />
+                  <path d="M15.44 3.69a9 9 0 0 0 -3.44 -.69" />
+                </svg>
+                <p>20,000 team allocations (2%)</p>
+              </div>
+              <div className="tokenomics-list">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="icon icon-tabler icon-tabler-circle-dashed"
+                  width="60"
+                  height="60"
+                  viewBox="0 0 24 24"
+                  strokeWidth="1.5"
+                  stroke="#ff4495"
+                  fill="none"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                  <path d="M8.56 3.69a9 9 0 0 0 -2.92 1.95" />
+                  <path d="M3.69 8.56a9 9 0 0 0 -.69 3.44" />
+                  <path d="M3.69 15.44a9 9 0 0 0 1.95 2.92" />
+                  <path d="M8.56 20.31a9 9 0 0 0 3.44 .69" />
+                  <path d="M15.44 20.31a9 9 0 0 0 2.92 -1.95" />
+                  <path d="M20.31 15.44a9 9 0 0 0 .69 -3.44" />
+                  <path d="M20.31 8.56a9 9 0 0 0 -1.95 -2.92" />
+                  <path d="M15.44 3.69a9 9 0 0 0 -3.44 -.69" />
+                </svg>
+                <p>460,000 presale (46%)</p>
+              </div>
+              <div className="tokenomics-list">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="icon icon-tabler icon-tabler-circle-dashed"
+                  width="60"
+                  height="60"
+                  viewBox="0 0 24 24"
+                  strokeWidth="1.5"
+                  stroke="#ff4495"
+                  fill="none"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                  <path d="M8.56 3.69a9 9 0 0 0 -2.92 1.95" />
+                  <path d="M3.69 8.56a9 9 0 0 0 -.69 3.44" />
+                  <path d="M3.69 15.44a9 9 0 0 0 1.95 2.92" />
+                  <path d="M8.56 20.31a9 9 0 0 0 3.44 .69" />
+                  <path d="M15.44 20.31a9 9 0 0 0 2.92 -1.95" />
+                  <path d="M20.31 15.44a9 9 0 0 0 .69 -3.44" />
+                  <path d="M20.31 8.56a9 9 0 0 0 -1.95 -2.92" />
+                  <path d="M15.44 3.69a9 9 0 0 0 -3.44 -.69" />
+                </svg>
+                <p>460,000 uniswap liquidity (46%)</p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
+      <section className="platform-user">
+        <div className="wrapper-parent">
+          <h3>Who can use the platorfm?</h3>
+          <div className="flex-template">
+            <div>
+              <h2>Anyone can use Donata Platform</h2>
+            </div>
+            <p>
+              No matter who you are, Donata provides you an easy to use,
+              intiuitive way of sending and receiving any ERC20 token donation.
+            </p>
+          </div>
+          <div className="user-box-parent">
+            <div>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="icon icon-tabler icon-tabler-confetti"
+                width="60"
+                height="60"
+                viewBox="0 0 24 24"
+                strokeWidth="1.5"
+                stroke="#ff4495"
+                fill="none"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M4 5h2" />
+                <path d="M5 4v2" />
+                <path d="M11.5 4l-.5 2" />
+                <path d="M18 5h2" />
+                <path d="M19 4v2" />
+                <path d="M15 9l-1 1" />
+                <path d="M18 13l2 -.5" />
+                <path d="M18 19h2" />
+                <path d="M19 18v2" />
+                <path d="M14 16.518l-6.518 -6.518l-4.39 9.58a1.003 1.003 0 0 0 1.329 1.329l9.579 -4.39z" />
+              </svg>
+              <p>Streamer</p>
+            </div>
+            <div>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="icon icon-tabler icon-tabler-brand-tiktok"
+                width="60"
+                height="60"
+                viewBox="0 0 24 24"
+                strokeWidth="1.5"
+                stroke="#ff4495"
+                fill="none"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M9 12a4 4 0 1 0 4 4v-12a5 5 0 0 0 5 5" />
+              </svg>
+              <p>Influencer</p>
+            </div>
+            <div>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="icon icon-tabler icon-tabler-affiliate"
+                width="60"
+                height="60"
+                viewBox="0 0 24 24"
+                strokeWidth="1.5"
+                stroke="#ff4495"
+                fill="none"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M5.931 6.936l1.275 4.249m5.607 5.609l4.251 1.275" />
+                <path d="M11.683 12.317l5.759 -5.759" />
+                <circle cx="5.5" cy="5.5" r="1.5" />
+                <circle cx="18.5" cy="5.5" r="1.5" />
+                <circle cx="18.5" cy="18.5" r="1.5" />
+                <circle cx="8.5" cy="15.5" r="4.5" />
+              </svg>
+              <p>Organization</p>
+            </div>
+            <div>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="icon icon-tabler icon-tabler-currency-cent"
+                width="60"
+                height="60"
+                viewBox="0 0 24 24"
+                strokeWidth="1.5"
+                stroke="#ff4495"
+                fill="none"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M16.007 7.54a5.965 5.965 0 0 0 -4.008 -1.54a5.996 5.996 0 0 0 -5.992 6c0 3.314 2.682 6 5.992 6a5.965 5.965 0 0 0 4.004 -1.536" />
+                <path d="M12 20v-2" />
+                <path d="M12 6v-2" />
+              </svg>
+              <p>Crypto Project</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <footer>
+        <div className="wrapper-parent">
+          <a
+            href="https://github.com/donatadefi"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="icon icon-tabler icon-tabler-brand-github"
+              width="40"
+              height="40"
+              viewBox="0 0 24 24"
+              strokeWidth="1.5"
+              stroke="#ff4495"
+              fill="none"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+            </svg>
+          </a>
+          <a
+            href="https://github.com/donatadefi"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="icon icon-tabler icon-tabler-brand-telegram"
+              width="40"
+              height="40"
+              viewBox="0 0 24 24"
+              strokeWidth="1.5"
+              stroke="#ff4495"
+              fill="none"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M15 10l-4 4l6 6l4 -16l-18 7l4 2l2 6l3 -4" />
+            </svg>
+          </a>
+        </div>
+      </footer>
     </div>
   );
 }
