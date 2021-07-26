@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
+import { addressTrim } from '../helper';
 import donataLogo from '../assets/donata-logo.png';
 
 import './FrontPage.scss';
@@ -20,9 +21,10 @@ function FrontPage() {
       return (
         <div key={user.id}>
           <img src={user.photoUrl} alt="" />
-          <p>{user.userName}</p>
+
           <p>{user.description}</p>
-          <p>{user.id}</p>
+          <p>{addressTrim(user.id)}</p>
+          <p>{user.userName}</p>
         </div>
       );
     });
@@ -32,14 +34,14 @@ function FrontPage() {
       <header>
         <div>
           <a href="/" target="_blank">
-            <div>
+            <div className="title-logo">
               <img src={donataLogo} alt="donata-logo" />
               <h1>DONATA</h1>
             </div>
           </a>
-        </div>
-        <div className="input-div">
-          <input placeholder="Search wallet address" />
+          <div className="input-div">
+            <input placeholder="Search wallet address" />
+          </div>
         </div>
       </header>
 
