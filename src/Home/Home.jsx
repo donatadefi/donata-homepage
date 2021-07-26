@@ -16,7 +16,9 @@ function Home() {
             <img src={donataLogo} alt="donata-logo" />
             <h1>DONATA</h1>
           </div>
-          <button>Launch App</button>
+          <a href="/" target="_blank" rel="noopener noreferrer">
+            <button>Launch App</button>
+          </a>
         </div>
       </header>
       <section className="top">

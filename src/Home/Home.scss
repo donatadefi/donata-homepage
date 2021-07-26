@@ -45,6 +45,9 @@
           }
         }
       }
+      a {
+        cursor: pointer;
+      }
       button {
         background: none;
         border: 2px solid #ffffff;
@@ -53,6 +56,11 @@
         font-weight: 600;
         padding: 10px 30px;
         border-radius: 30px;
+        cursor: pointer;
+        &:hover {
+          background: #fff;
+          color: #000;
+        }
         @include phone {
           font-size: 14px;
         }

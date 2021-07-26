@@ -1,0 +1,68 @@
+@mixin phone {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+
+.FrontPage {
+  header {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #dedede;
+    @include phone {
+      padding: 10px;
+    }
+    div {
+      display: flex;
+      width: auto;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      @include phone {
+        width: 20%;
+        display: block;
+        margin: 0;
+      }
+      a {
+        text-decoration: none;
+      }
+      img {
+        width: 40px;
+        margin-right: 15px;
+        @include phone {
+          width: 30px;
+          display: block;
+          text-align: left;
+        }
+      }
+      h1 {
+        color: #383838;
+        font-size: 24px;
+        @include phone {
+          display: none;
+        }
+      }
+    }
+
+    .input-div {
+      width: 400px;
+      box-sizing: border-box;
+      @include phone {
+        width: 80%;
+      }
+      input {
+        padding: 8px 15px;
+        border: 2px solid #d6d6d6;
+        border-radius: 30px;
+        width: 100%;
+        box-sizing: border-box;
+        &:focus {
+          outline: none;
+          border: 2px solid #07a6fb;
+        }
+      }
+    }
+  }
+}
