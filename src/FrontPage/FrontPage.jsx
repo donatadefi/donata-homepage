@@ -12,7 +12,6 @@ function FrontPage() {
       .then((res) => res.json())
       .then((data) => {
         setUsers(data.data);
-        console.log(data);
       });
   }, []);
   document.title = 'Donata | Front Page';
@@ -33,7 +32,11 @@ function FrontPage() {
             </a>
           </div>
 
-          <NavLink to="/" className="user-name">
+          <NavLink
+            to={`/user/${user.id}`}
+            className="user-name"
+            target="_blank"
+          >
             <p>{user.userName}</p>
           </NavLink>
         </div>
