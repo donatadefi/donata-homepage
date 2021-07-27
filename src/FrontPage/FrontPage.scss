@@ -77,14 +77,44 @@
     margin-top: 30px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-gap: 50px;
+    grid-gap: 70px;
     box-sizing: border-box;
-
-    div {
+    & > div {
+      border: 3px solid #d4d4d4;
+      position: relative;
+      margin-top: 40px;
+      border-radius: 20px;
       img {
         width: 100%;
         height: 250px;
         object-fit: cover;
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+      }
+      .desc-wrapper {
+        box-sizing: border-box;
+        padding: 15px;
+        border: none;
+
+        .desc {
+          margin-bottom: 10px;
+          line-height: 1.5;
+          color: #3f4854;
+        }
+      }
+      .user-name {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        padding: 10px;
+        text-align: center;
+        text-decoration: none;
+        color: #fff;
+        background-color: #07a6fb;
+        width: 100%;
+        box-sizing: border-box;
+        border-radius: 30px;
+        margin-top: 10px;
       }
     }
   }
