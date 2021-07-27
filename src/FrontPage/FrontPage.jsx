@@ -6,6 +6,8 @@ import donataLogo from '../assets/donata-logo.png';
 
 import './FrontPage.scss';
 function FrontPage() {
+  document.title = 'Donata | Front Page';
+
   const [users, setUsers] = useState([]);
   useEffect(() => {
     fetch('http://localhost:5000/users')
@@ -14,7 +16,34 @@ function FrontPage() {
         setUsers(data.data);
       });
   }, []);
-  document.title = 'Donata | Front Page';
+
+  const searchAddress = (val) => {
+    if (!val) {
+      fetch('http://localhost:5000/users')
+        .then((res) => res.json())
+        .then((data) => {
+          setUsers(data.data);
+        });
+      return;
+    }
+    fetch('http://localhost:5000/address', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      cache: 'no-cache',
+      body: JSON.stringify({ address: val.toLowerCase() }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (!data.user) {
+          setUsers([]);
+        } else {
+          setUsers(data.user);
+        }
+      });
+  };
+
+  console.log(users);
 
   const renderUsers = () => {
     return users.map((user) => {
@@ -54,14 +83,17 @@ function FrontPage() {
             </div>
           </a>
           <div className="input-div">
-            <input placeholder="Search wallet address" />
+            <input
+              placeholder="Search wallet address"
+              onChange={(e) => searchAddress(e.target.value)}
+            />
           </div>
         </div>
       </header>
 
       <div className="users">
         {renderUsers()}
-        <div>
+        {/* <div>
           <img
             src="https://www.planetbuddies.com/media/catalog/product/cache/6c07725d11cf11164242a71cef72688e/p/e/pepper-the-penguin-speaker.jpg"
             alt=""
@@ -136,7 +168,7 @@ function FrontPage() {
             {' '}
             <p>Donata Project</p>
           </NavLink>
-        </div>
+        </div> */}
       </div>
     </div>
   );
