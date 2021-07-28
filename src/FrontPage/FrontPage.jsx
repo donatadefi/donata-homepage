@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
-import { addressTrim, descTrim } from '../helper';
+import { addressTrim } from '../helper';
 import donataLogo from '../assets/donata-logo.png';
 
 import './FrontPage.scss';
