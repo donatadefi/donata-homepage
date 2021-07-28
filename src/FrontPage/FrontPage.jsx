@@ -9,6 +9,8 @@ function FrontPage() {
   document.title = 'Donata | Front Page';
 
   const [users, setUsers] = useState([]);
+  const [searchValue, setSearchValue] = useState('');
+  const [loadingState, setLoadingState] = useState(false);
   useEffect(() => {
     fetch('http://localhost:5000/users')
       .then((res) => res.json())
@@ -19,31 +21,42 @@ function FrontPage() {
 
   const searchAddress = (val) => {
     if (!val) {
+      setLoadingState(true);
       fetch('http://localhost:5000/users')
         .then((res) => res.json())
         .then((data) => {
           setUsers(data.data);
+          setLoadingState(false);
         });
+    }
+
+    setSearchValue(val);
+  };
+
+  const submitSearch = (e) => {
+    e.preventDefault();
+    if (!searchValue) {
       return;
     }
+    setLoadingState(true);
+
     fetch('http://localhost:5000/address', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       cache: 'no-cache',
-      body: JSON.stringify({ address: val.toLowerCase() }),
+      body: JSON.stringify({ address: searchValue.toLowerCase() }),
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         if (!data.user) {
           setUsers([]);
+          setLoadingState(false);
         } else {
           setUsers(data.user);
+          setLoadingState(false);
         }
       });
   };
-
-  console.log(users);
 
   const renderUsers = () => {
     return users.map((user) => {
@@ -72,6 +85,7 @@ function FrontPage() {
       );
     });
   };
+
   return (
     <div className="FrontPage">
       <header>
@@ -83,93 +97,18 @@ function FrontPage() {
             </div>
           </a>
           <div className="input-div">
-            <input
-              placeholder="Search wallet address"
-              onChange={(e) => searchAddress(e.target.value)}
-            />
+            <form onSubmit={submitSearch}>
+              <input
+                placeholder="Search wallet address (Enter to search)"
+                onChange={(e) => searchAddress(e.target.value)}
+                value={searchValue}
+              />
+            </form>
           </div>
         </div>
       </header>
-
-      <div className="users">
-        {renderUsers()}
-        {/* <div>
-          <img
-            src="https://www.planetbuddies.com/media/catalog/product/cache/6c07725d11cf11164242a71cef72688e/p/e/pepper-the-penguin-speaker.jpg"
-            alt=""
-          />
-          <div className="desc-wrapper">
-            <p className="desc">
-              {descTrim(
-                'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eveniet, explicabo ab distinctio hic unde amet vel excepturi ullam quasi dolore porro asperiores quis minus exercitationem nobis reiciendis repudiandae deleniti. Omnis neque explicabo officia quasi magnam qui, officiis sint fugiat id doloremque inventore maxime modi aspernatur similique cumque amet eligendi eius.'
-              )}
-            </p>
-            <p>{addressTrim('0x3457ysuys74hfy746yyusi0oslpG7uYkisdujsjd89')}</p>
-          </div>
-
-          <NavLink to="/" className="user-name">
-            {' '}
-            <p>Donata Project</p>
-          </NavLink>
-        </div>
-        <div>
-          <img
-            src="https://graphicriver.img.customer.envatousercontent.com/files/312723276/gr.jpg?auto=compress%2Cformat&q=80&fit=crop&crop=top&max-h=8000&max-w=590&s=a090fc89d2a502b1bc04e5acef2711b2"
-            alt=""
-          />
-          <div className="desc-wrapper">
-            <p className="desc">
-              {descTrim(
-                'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eveniet, explicabo ab distinctio hic unde amet vel excepturi ullam quasi dolore porro asperiores quis minus exercitationem nobis reiciendis repudiandae deleniti. Omnis neque explicabo officia quasi magnam qui, officiis sint fugiat id doloremque inventore maxime modi aspernatur similique cumque amet eligendi eius.'
-              )}
-            </p>
-            <p>{addressTrim('0x3457ysuys74hfy746yyusi0oslpG7uYkisdujsjd89')}</p>
-          </div>
-
-          <NavLink to="/" className="user-name">
-            {' '}
-            <p>Donata Project</p>
-          </NavLink>
-        </div>
-        <div>
-          <img
-            src="https://graphicriver.img.customer.envatousercontent.com/files/312723276/gr.jpg?auto=compress%2Cformat&q=80&fit=crop&crop=top&max-h=8000&max-w=590&s=a090fc89d2a502b1bc04e5acef2711b2"
-            alt=""
-          />
-          <div className="desc-wrapper">
-            <p className="desc">
-              {descTrim(
-                'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eveniet, explicabo ab distinctio hic unde amet vel excepturi ullam quasi dolore porro asperiores quis minus exercitationem nobis reiciendis repudiandae deleniti. Omnis neque explicabo officia quasi magnam qui, officiis sint fugiat id doloremque inventore maxime modi aspernatur similique cumque amet eligendi eius.'
-              )}
-            </p>
-            <p>{addressTrim('0x3457ysuys74hfy746yyusi0oslpG7uYkisdujsjd89')}</p>
-          </div>
-
-          <NavLink to="/" className="user-name">
-            {' '}
-            <p>Donata Project</p>
-          </NavLink>
-        </div>
-        <div>
-          <img
-            src="https://graphicriver.img.customer.envatousercontent.com/files/312723276/gr.jpg?auto=compress%2Cformat&q=80&fit=crop&crop=top&max-h=8000&max-w=590&s=a090fc89d2a502b1bc04e5acef2711b2"
-            alt=""
-          />
-          <div className="desc-wrapper">
-            <p className="desc">
-              {descTrim(
-                'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eveniet, explicabo ab distinctio hic unde amet vel excepturi ullam quasi dolore porro asperiores quis minus exercitationem nobis reiciendis repudiandae deleniti. Omnis neque explicabo officia quasi magnam qui, officiis sint fugiat id doloremque inventore maxime modi aspernatur similique cumque amet eligendi eius.'
-              )}
-            </p>
-            <p>{addressTrim('0x3457ysuys74hfy746yyusi0oslpG7uYkisdujsjd89')}</p>
-          </div>
-
-          <NavLink to="/" className="user-name">
-            {' '}
-            <p>Donata Project</p>
-          </NavLink>
-        </div> */}
-      </div>
+      {loadingState ? <p>loading...</p> : ''}
+      <div className="users">{renderUsers()}</div>
     </div>
   );
 }

@@ -3,6 +3,16 @@
     @content;
   }
 }
+@mixin tablet {
+  @media (min-width: 768px) and (max-width: 850px) {
+    @content;
+  }
+}
+@mixin laptop {
+  @media (min-width: 850px) and (max-width: 1200px) {
+    @content;
+  }
+}
 
 .FrontPage {
   header {
@@ -23,8 +33,6 @@
       margin: 0 auto;
       @include phone {
         width: 100%;
-        // display: block;
-        // margin: 0;
       }
       a {
         text-decoration: none;
@@ -79,6 +87,18 @@
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-gap: 70px;
     box-sizing: border-box;
+    @include phone {
+      grid-template-columns: 1fr;
+      padding: 20px;
+    }
+    @include tablet {
+      grid-template-columns: 1fr 1fr;
+      padding: 20px;
+    }
+    @include laptop {
+      grid-template-columns: 1fr 1fr 1fr;
+      padding: 20px;
+    }
     & > div {
       border: 3px solid #d4d4d4;
       position: relative;
