@@ -34,8 +34,13 @@ function User({ match }) {
         if (user.socials[key]) {
           return (
             <div key={key}>
-              <a href={user.socials[key]}>{svgRender[`${key}`]()}</a>
-              <a href={user.socials[key]}>{svgRender[`${key}`]()}</a>
+              <a
+                href={user.socials[key]}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {svgRender[`${key}`]()}
+              </a>
             </div>
           );
         }
@@ -63,7 +68,7 @@ function User({ match }) {
         <div className="user-socmed">{renderSocials()}</div>
 
         <div className="token-send">
-          <h2>Support {user.userName}</h2>
+          <h2>Show your love, Support {user.userName}</h2>
           <p>Select token to send</p>
           <select name="" id="">
             <option value="eth">Ethereum</option>

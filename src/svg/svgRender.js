@@ -18,6 +18,106 @@ const svgRender = {
       </svg>
     );
   },
+  youtube: function () {
+    return (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        className="icon icon-tabler icon-tabler-brand-youtube"
+        width="28"
+        height="28"
+        viewBox="0 0 24 24"
+        strokeWidth="1.5"
+        stroke="#ff2825"
+        fill="none"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        <rect x="3" y="5" width="18" height="14" rx="4" />
+        <path d="M10 9l5 3l-5 3z" />
+      </svg>
+    );
+  },
+  twitch: function () {
+    return (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        className="icon icon-tabler icon-tabler-brand-twitch"
+        width="28"
+        height="28"
+        viewBox="0 0 24 24"
+        strokeWidth="1.5"
+        stroke="#a905b6"
+        fill="none"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        <path d="M4 5v11a1 1 0 0 0 1 1h2v4l4 -4h5.584c.266 0 .52 -.105 .707 -.293l2.415 -2.414c.187 -.188 .293 -.442 .293 -.708v-8.585a1 1 0 0 0 -1 -1h-14a1 1 0 0 0 -1 1z" />
+        <line x1="16" y1="8" x2="16" y2="12" />
+        <line x1="12" y1="8" x2="12" y2="12" />
+      </svg>
+    );
+  },
+  instagram: function () {
+    return (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        className="icon icon-tabler icon-tabler-brand-instagram"
+        width="28"
+        height="28"
+        viewBox="0 0 24 24"
+        strokeWidth="1.5"
+        stroke="#fd0061"
+        fill="none"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        <rect x="4" y="4" width="16" height="16" rx="4" />
+        <circle cx="12" cy="12" r="3" />
+        <line x1="16.5" y1="7.5" x2="16.5" y2="7.501" />
+      </svg>
+    );
+  },
+  tiktok: function () {
+    return (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        className="icon icon-tabler icon-tabler-brand-tiktok"
+        width="28"
+        height="28"
+        viewBox="0 0 24 24"
+        strokeWidth="1.5"
+        stroke="#6f32be"
+        fill="none"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        <path d="M9 12a4 4 0 1 0 4 4v-12a5 5 0 0 0 5 5" />
+      </svg>
+    );
+  },
+  facebook: function () {
+    return (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        className="icon icon-tabler icon-tabler-brand-facebook"
+        width="28"
+        height="28"
+        viewBox="0 0 24 24"
+        strokeWidth="1.5"
+        stroke="#4267B2"
+        fill="none"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        <path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3" />
+      </svg>
+    );
+  },
 };
 
 export default svgRender;

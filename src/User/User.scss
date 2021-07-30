@@ -6,9 +6,10 @@
     margin-top: 50px;
     .user-flex {
       display: flex;
-      border: 2px solid rgb(255, 68, 149);
+      // border: 2px solid rgb(255, 68, 149);
       border-radius: 20px;
       padding: 20px;
+      background: linear-gradient(to right, #00095e 0%, #0c0c1f 100%);
       img {
         margin-right: 80px;
         border-radius: 20px;
@@ -17,26 +18,33 @@
         object-fit: cover;
       }
       h1 {
-        color: #232f55;
+        color: rgb(255, 68, 149);
         margin-bottom: 20px;
       }
       .desc {
         margin-bottom: 20px;
-        color: #3f4854;
+        color: #fff;
+      }
+      a {
+        color: #fff;
       }
     }
 
     .user-socmed {
       padding: 10px;
       text-align: right;
+      a {
+        margin-left: 10px;
+      }
     }
 
     .token-send {
-      margin-top: 50px;
+      margin-top: 40px;
       h2 {
         text-align: center;
         color: #232f55;
-        margin-bottom: 30px;
+        margin-bottom: 40px;
+        font-weight: 300;
       }
     }
   }
