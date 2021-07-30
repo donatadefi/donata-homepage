@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Select from 'react-select';
 
 import svgRender from '../svg/svgRender';
 
@@ -19,7 +20,18 @@ function User({ match }) {
     })
       .then((res) => res.json())
       .then((data) => {
-        setUser(data.user[0]);
+        const rawToken = data.user[0];
+        const rawTokensList = data.user[0].tokensList;
+        rawTokensList.forEach((token, idx) => {
+          rawTokensList[idx].value = token.address;
+          rawTokensList[idx].label = token.name;
+        });
+        rawTokensList.unshift({
+          value: 'ethereum',
+          label: 'ETHEREUM',
+        });
+        rawToken.tokensList = rawTokensList;
+        setUser(rawToken);
       });
   }, [match.params.id]);
 
@@ -69,18 +81,25 @@ function User({ match }) {
 
         <div className="token-send">
           <h2>Show your love, Support {user.userName}</h2>
-          <p>Select token to send</p>
-          <select name="" id="">
-            <option value="eth">Ethereum</option>
-            {user.tokensList &&
-              user.tokensList.map((token) => {
-                return (
-                  <option value="" key={token.address}>
-                    {token.name}
-                  </option>
-                );
-              })}
-          </select>
+
+          <div className="send-wrapper">
+            <div>
+              <p>Select token to send</p>
+              <Select
+                options={user.tokensList}
+                onChange={(e) => {
+                  console.log(e);
+                }}
+              />
+            </div>
+            <div>
+              <p>Amount</p>
+              <input type="number" placeholder="Type the amount" />
+            </div>
+            <div>
+              <button>Send</button>
+            </div>
+          </div>
         </div>
       </div>
     );
