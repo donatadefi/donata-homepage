@@ -1,14 +1,24 @@
 import React, { useEffect, useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import Select from 'react-select';
 
+import { addressTrim } from '../helper';
 import svgRender from '../svg/svgRender';
 
 import './User.scss';
 
 function User({ match }) {
   document.title = 'Donata | User';
+  const { ethereum } = window;
   const [user, setUser] = useState({});
+  const [account, setAccount] = useState('');
   useEffect(() => {
+    //this checks whether the account already connected or not
+    ethereum.request({ method: 'eth_accounts' }).then((addr) => {
+      if (addr.length > 0) {
+        setAccount(addr[0]);
+      }
+    });
     fetch('http://localhost:5000/address', {
       method: 'POST',
       headers: {
@@ -34,6 +44,17 @@ function User({ match }) {
         setUser(rawToken);
       });
   }, [match.params.id]);
+
+  const connectWallet = async () => {
+    if (account) {
+      return;
+    }
+    const accounts = await ethereum.request({
+      method: 'eth_requestAccounts',
+    });
+    const acc = accounts[0];
+    setAccount(acc);
+  };
 
   const renderUser = () => {
     if (!user.id) {
@@ -80,7 +101,7 @@ function User({ match }) {
         <div className="user-socmed">{renderSocials()}</div>
 
         <div className="token-send">
-          <h2>Show your love, Support {user.userName}</h2>
+          <h2>Show your love, Support {user.userName}!</h2>
 
           <div className="send-wrapper">
             <div>
@@ -94,7 +115,7 @@ function User({ match }) {
             </div>
             <div>
               <p>Amount</p>
-              <input type="number" placeholder="Type the amount" />
+              <input type="number" placeholder="Insert the amount" />
             </div>
             <div>
               <button>Send</button>
@@ -104,7 +125,23 @@ function User({ match }) {
       </div>
     );
   };
-  return <div className="User">{renderUser()}</div>;
+
+  return (
+    <div className="User">
+      <div className="head-section">
+        <NavLink to="/front-page">
+          <button>Front Page</button>
+        </NavLink>
+        <div>
+          <button> Go to App</button>
+          <button onClick={connectWallet}>
+            {account ? addressTrim(account) : 'Connect Wallet'}
+          </button>
+        </div>
+      </div>
+      {renderUser()}
+    </div>
+  );
 }
 
 export default User;
