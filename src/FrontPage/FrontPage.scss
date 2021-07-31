@@ -15,12 +15,20 @@
 }
 
 .FrontPage {
+  padding-bottom: 50px;
+  padding-top: 40px;
   header {
-    padding: 20px;
+    padding: 10px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     border-bottom: 1px solid #dedede;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9;
+    background-color: #fff;
     @include phone {
       padding: 10px;
     }
@@ -33,6 +41,7 @@
       margin: 0 auto;
       @include phone {
         width: 100%;
+        justify-content: center;
       }
       a {
         text-decoration: none;
@@ -48,6 +57,7 @@
             width: 30px;
             display: block;
             text-align: left;
+            margin-right: 10px;
           }
         }
         h1 {
@@ -89,6 +99,7 @@
     box-sizing: border-box;
     @include phone {
       grid-template-columns: 1fr;
+
       padding: 20px;
     }
     @include tablet {
@@ -104,9 +115,12 @@
       position: relative;
       margin-top: 40px;
       border-radius: 20px;
+      @include phone {
+        margin-top: 10px;
+      }
       img {
         width: 100%;
-        height: 250px;
+        height: 200px;
         object-fit: cover;
         border-top-left-radius: 15px;
         border-top-right-radius: 15px;

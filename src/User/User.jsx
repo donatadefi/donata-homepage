@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import Select from 'react-select';
+import web3 from 'web3';
 
 import { addressTrim } from '../helper';
 import svgRender from '../svg/svgRender';
@@ -12,6 +13,7 @@ function User({ match }) {
   const { ethereum } = window;
   const [user, setUser] = useState({});
   const [account, setAccount] = useState('');
+  const [selectedToken, setSelectedToken] = useState('');
   useEffect(() => {
     //this checks whether the account already connected or not
     ethereum.request({ method: 'eth_accounts' }).then((addr) => {
@@ -54,6 +56,29 @@ function User({ match }) {
     });
     const acc = accounts[0];
     setAccount(acc);
+  };
+
+  const sendTransaction = (id) => {
+    if (!selectedToken) {
+      return;
+    }
+    console.log(selectedToken);
+    if (selectedToken.value === 'ethereum') {
+      ethereum
+        .request({
+          method: 'eth_sendTransaction',
+          params: [
+            {
+              from: account,
+              to: id,
+              value: parseInt(web3.utils.toWei('0.0002', 'ether')).toString(16),
+            },
+          ],
+        })
+        .then((txHash) => console.log(txHash))
+        .catch((error) => console.error);
+    } else {
+    }
   };
 
   const renderUser = () => {
@@ -109,7 +134,7 @@ function User({ match }) {
               <Select
                 options={user.tokensList}
                 onChange={(e) => {
-                  console.log(e);
+                  setSelectedToken(e);
                 }}
               />
             </div>
@@ -118,7 +143,7 @@ function User({ match }) {
               <input type="number" placeholder="Insert the amount" />
             </div>
             <div>
-              <button>Send</button>
+              <button onClick={() => sendTransaction(user.id)}>Send</button>
             </div>
           </div>
         </div>
