@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import Select from 'react-select';
-import web3 from 'web3';
+import Web3 from 'web3';
 
 import { addressTrim } from '../helper';
 import svgRender from '../svg/svgRender';
@@ -14,6 +14,8 @@ function User({ match }) {
   const [user, setUser] = useState({});
   const [account, setAccount] = useState('');
   const [selectedToken, setSelectedToken] = useState('');
+  const [tokenAmount, setTokenAmount] = useState('');
+
   useEffect(() => {
     //this checks whether the account already connected or not
     ethereum.request({ method: 'eth_accounts' }).then((addr) => {
@@ -34,9 +36,11 @@ function User({ match }) {
       .then((data) => {
         const rawToken = data.user[0];
         const rawTokensList = data.user[0].tokensList;
+        //wow, i am setting tokensList silently here
         rawTokensList.forEach((token, idx) => {
           rawTokensList[idx].value = token.address;
           rawTokensList[idx].label = token.name;
+          rawTokensList[idx].decimals = token.decimals;
         });
         rawTokensList.unshift({
           value: 'ethereum',
@@ -58,11 +62,10 @@ function User({ match }) {
     setAccount(acc);
   };
 
-  const sendTransaction = (id) => {
-    if (!selectedToken) {
+  const sendToken = () => {
+    if (!selectedToken || !tokenAmount) {
       return;
     }
-    console.log(selectedToken);
     if (selectedToken.value === 'ethereum') {
       ethereum
         .request({
@@ -70,16 +73,63 @@ function User({ match }) {
           params: [
             {
               from: account,
-              to: id,
-              value: parseInt(web3.utils.toWei('0.0002', 'ether')).toString(16),
+              to: user.id,
+              value: parseInt(
+                Web3.utils.toWei(String(tokenAmount), 'ether')
+              ).toString(16),
             },
           ],
         })
         .then((txHash) => console.log(txHash))
         .catch((error) => console.error);
     } else {
+      let web3 = new Web3(ethereum);
+      let tokenAddress = selectedToken.value;
+      let toAddress = user.id;
+      let fromAddress = account;
+      // Use BigNumber
+      let amount = Web3.utils.toBN(tokenAmount);
+      let minABI = [
+        // transfer
+        {
+          constant: false,
+          inputs: [
+            {
+              name: '_to',
+              type: 'address',
+            },
+            {
+              name: '_value',
+              type: 'uint256',
+            },
+          ],
+          name: 'transfer',
+          outputs: [
+            {
+              name: '',
+              type: 'bool',
+            },
+          ],
+          type: 'function',
+        },
+      ];
+
+      let decimals = web3.utils.toBN(Number(selectedToken.decimals));
+      // Get ERC20 Token contract instance
+      let contract = new web3.eth.Contract(minABI, tokenAddress);
+      // calculate ERC20 token amount
+      let value = amount.mul(web3.utils.toBN(10).pow(decimals));
+      // call transfer function
+      contract.methods
+        .transfer(toAddress, value)
+        .send({ from: fromAddress })
+        .on('receipt', function (hash) {
+          console.log(hash);
+        });
     }
   };
+
+  console.log(selectedToken);
 
   const renderUser = () => {
     if (!user.id) {
@@ -140,10 +190,14 @@ function User({ match }) {
             </div>
             <div>
               <p>Amount</p>
-              <input type="number" placeholder="Insert the amount" />
+              <input
+                type="number"
+                placeholder="Insert the amount"
+                onChange={(e) => setTokenAmount(e.target.value)}
+              />
             </div>
             <div>
-              <button onClick={() => sendTransaction(user.id)}>Send</button>
+              <button onClick={() => sendToken()}>Send</button>
             </div>
           </div>
         </div>
