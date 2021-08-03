@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import Select from 'react-select';
 import Web3 from 'web3';
 
-import { addressTrim } from '../helper';
+import { addressTrim, deviceType } from '../helper';
 import svgRender from '../svg/svgRender';
 
 import './User.scss';
@@ -15,15 +15,19 @@ function User({ match }) {
   const [account, setAccount] = useState('');
   const [selectedToken, setSelectedToken] = useState('');
   const [tokenAmount, setTokenAmount] = useState('');
+  const [openModal, setOpenModal] = useState(false);
 
   useEffect(() => {
     //this checks whether the account already connected or not
-    ethereum.request({ method: 'eth_accounts' }).then((addr) => {
-      if (addr.length > 0) {
-        setAccount(addr[0]);
-      }
-    });
-    fetch('http://localhost:5000/address', {
+    if (ethereum) {
+      ethereum.request({ method: 'eth_accounts' }).then((addr) => {
+        if (addr.length > 0) {
+          setAccount(addr[0]);
+        }
+      });
+    }
+
+    fetch('https://donatedefi.finance/address', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -39,7 +43,7 @@ function User({ match }) {
         //wow, i am setting tokensList silently here
         rawTokensList.forEach((token, idx) => {
           rawTokensList[idx].value = token.address;
-          rawTokensList[idx].label = token.name;
+          rawTokensList[idx].label = token.symbol;
           rawTokensList[idx].decimals = token.decimals;
         });
         rawTokensList.unshift({
@@ -55,11 +59,33 @@ function User({ match }) {
     if (account) {
       return;
     }
-    const accounts = await ethereum.request({
-      method: 'eth_requestAccounts',
-    });
-    const acc = accounts[0];
-    setAccount(acc);
+
+    //device is desktop but no mm installed
+    if (!ethereum && deviceType() === 'desktop') {
+      return;
+    }
+
+    //device is desktop and mm installed
+    if (deviceType() === 'desktop' && ethereum) {
+      const accounts = await ethereum.request({
+        method: 'eth_requestAccounts',
+      });
+      const acc = accounts[0];
+      setAccount(acc);
+    }
+    //device is mobile and no ethereum (still in browser)
+    if (deviceType() != 'desktop' && !ethereum) {
+      setOpenModal(true);
+    }
+
+    //device is mobile and inside mm
+    if (deviceType() != 'desktop' && ethereum) {
+      const accounts = await ethereum.request({
+        method: 'eth_requestAccounts',
+      });
+      const acc = accounts[0];
+      setAccount(acc);
+    }
   };
 
   const sendToken = () => {
@@ -128,8 +154,6 @@ function User({ match }) {
         });
     }
   };
-
-  console.log(selectedToken);
 
   const renderUser = () => {
     if (!user.id) {
@@ -207,6 +231,24 @@ function User({ match }) {
 
   return (
     <div className="User">
+      <div className="modal" style={{ display: openModal ? 'block' : 'none' }}>
+        <div>
+          <a
+            href={`https://metamask.app.link/dapp/donata-homepage.web.app/user/${match.params.id}`}
+            className="btn"
+          >
+            Open MetaMask
+          </a>
+          <a
+            href="https://metamask.io"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Install MetaMask
+          </a>
+          <p onClick={() => setOpenModal(false)}>close</p>
+        </div>
+      </div>
       <div className="head-section">
         <NavLink to="/front-page">
           <button>Front Page</button>

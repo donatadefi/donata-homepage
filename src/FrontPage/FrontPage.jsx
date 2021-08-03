@@ -12,7 +12,7 @@ function FrontPage() {
   const [searchValue, setSearchValue] = useState('');
   const [loadingState, setLoadingState] = useState(false);
   useEffect(() => {
-    fetch('http://localhost:5000/users')
+    fetch('https://donatedefi.finance/users')
       .then((res) => res.json())
       .then((data) => {
         setUsers(data.data);
@@ -22,7 +22,7 @@ function FrontPage() {
   const searchAddress = (val) => {
     if (!val) {
       setLoadingState(true);
-      fetch('http://localhost:5000/users')
+      fetch('https://donatedefi.finance/users')
         .then((res) => res.json())
         .then((data) => {
           setUsers(data.data);
@@ -40,7 +40,7 @@ function FrontPage() {
     }
     setLoadingState(true);
 
-    fetch('http://localhost:5000/address', {
+    fetch('https://donatedefi.finance/address', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       cache: 'no-cache',
