@@ -155,29 +155,35 @@ function User({ match }) {
     }
   };
 
+  const renderSocials = () => {
+    const keys = Object.keys(user.socials);
+    const theDiv = keys.map((key, index)=> {
+      if(user.socials[key]){
+        return (
+          <div key={key}>
+            <a
+              href={user.socials[key]}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {svgRender[`${key}`]()}
+            </a>
+          </div>
+        );
+      }
+      
+    });
+
+    return <>{theDiv}</>
+  };
+
   const renderUser = () => {
     if (!user.id) {
       return;
     }
     if (user.tokensList) {
     }
-    const renderSocials = () => {
-      for (const key in user.socials) {
-        if (user.socials[key]) {
-          return (
-            <div key={key}>
-              <a
-                href={user.socials[key]}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {svgRender[`${key}`]()}
-              </a>
-            </div>
-          );
-        }
-      }
-    };
+    
 
     return (
       <div className="user-wrapper">
