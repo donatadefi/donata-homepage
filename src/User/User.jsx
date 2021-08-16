@@ -29,7 +29,7 @@ function User({ match }) {
       });
     }
 
-    fetch('http://localhost:5000/address', {
+    fetch('http://donatadefi.finance/address', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
