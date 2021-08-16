@@ -5,6 +5,8 @@ import Web3 from 'web3';
 
 import { addressTrim, deviceType } from '../helper';
 import svgRender from '../svg/svgRender';
+import checkLogo from '../assets/check.png';
+
 
 import './User.scss';
 
@@ -192,7 +194,11 @@ function User({ match }) {
             <img src={user.photoUrl} alt="" />
           </div>
           <div>
+            <div className="title-flex">
             <h1>{user.userName}</h1>
+            <img src={checkLogo} alt="verified-user" />
+              
+            </div>
             <p className="desc">{user.description}</p>
             <a
               href={`https://etherscan.io/address/${user.id}`}

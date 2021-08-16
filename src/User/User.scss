@@ -112,6 +112,19 @@
       @include phone {
         display: block;
       }
+      .title-flex {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+        h1 {
+          color: rgb(255, 68, 149);
+          margin-right: 10px;
+        }
+        img {
+          width: 40px;
+          height: auto;
+        }
+      }
       img {
         margin-right: 80px;
         border-radius: 20px;
@@ -127,10 +140,7 @@
           height: 300px;
         }
       }
-      h1 {
-        color: rgb(255, 68, 149);
-        margin-bottom: 20px;
-      }
+      
       .desc {
         margin-bottom: 20px;
         color: #fff;
