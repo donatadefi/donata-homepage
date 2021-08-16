@@ -3,6 +3,8 @@ import { NavLink } from 'react-router-dom';
 
 import { addressTrim } from '../helper';
 import donataLogo from '../assets/donata-logo.png';
+import checkLogo from '../assets/check.png';
+
 
 import './FrontPage.scss';
 function FrontPage() {
@@ -62,6 +64,8 @@ function FrontPage() {
     return users.map((user) => {
       return (
         <div key={user.id}>
+          {user.verified && <img src={checkLogo} alt="verified-user" className="verified"/> }
+          
           <img src={user.photoUrl} alt="" />
           <div className="desc-wrapper">
             <p className="desc">{user.description}</p>

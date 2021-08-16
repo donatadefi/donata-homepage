@@ -27,7 +27,7 @@ function User({ match }) {
       });
     }
 
-    fetch('https://donatedefi.finance/address', {
+    fetch('http://localhost:5000/address', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
