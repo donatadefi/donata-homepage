@@ -30,7 +30,7 @@ function Home() {
           <div>
             <h1>Receive or send any ERC20</h1>
             <p>
-              DONATA make it easy to send and receive ERC20 token, intuitively.
+              DONATA make it easy to send and receive ERC20 token donation. It's efficient and intuitive.
             </p>
             <NavLink to="/front-page" target="_blank" className="to-front">
               Front Page
@@ -199,11 +199,9 @@ function Home() {
                   <path d="M17 9v-2a2 2 0 0 0 -2 -2h-10a2 2 0 0 0 -2 2v6a2 2 0 0 0 2 2h2" />
                 </svg>
               </div>
-              <h2>Deflationary</h2>
+              <h2>Deflationary Token</h2>
               <p>
-                Donata token will be used to pay for premium subscription of the
-                platform. Every subscription paid will be used to buyback and
-                burn the token.
+                Donata token (DNTA) holding will be needed for certain platform features. Every fees paid to get verified checkmark will be used to buyback and burn DNTA.
               </p>
             </div>
           </div>
