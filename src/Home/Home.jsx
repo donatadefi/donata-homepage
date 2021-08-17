@@ -477,7 +477,7 @@ function Home() {
             </svg>
           </a>
           <a
-            href="https://github.com/donatadefi"
+            href="https://t.me/donata_community"
             target="_blank"
             rel="noopener noreferrer"
           >
