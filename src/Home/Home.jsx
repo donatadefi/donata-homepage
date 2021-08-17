@@ -17,7 +17,7 @@ function Home() {
             <h1>DONATA</h1>
           </div>
           <a
-            href="https://donata-app.web.app"
+            href="https://app.donata.social"
             target="_blank"
             rel="noopener noreferrer"
           >

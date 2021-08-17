@@ -266,7 +266,9 @@ function User({ match }) {
           <button>Front Page</button>
         </NavLink>
         <div>
+          <a href="https://app.donata.social" rel="noopener noreferrer" target="_blank">
           <button> Go to App</button>
+          </a>
           <button onClick={connectWallet}>
             {account ? addressTrim(account) : 'Connect Wallet'}
           </button>
