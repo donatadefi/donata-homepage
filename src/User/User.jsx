@@ -196,7 +196,7 @@ function User({ match }) {
           <div>
             <div className="title-flex">
             <h1>{user.userName}</h1>
-            <img src={checkLogo} alt="verified-user" />
+            {user.verified && <img src={checkLogo} alt="verified-user" className="verified"/> }
               
             </div>
             <p className="desc">{user.description}</p>
